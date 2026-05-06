@@ -11,13 +11,13 @@ docker compose up -d
 ```
 
 ```bash
-./mvnw spring-boot:run
+./gradlew bootRun
 ```
 
 Windows PowerShell에서는 다음 명령을 사용할 수 있습니다.
 
 ```powershell
-.\mvnw.cmd spring-boot:run
+.\gradlew.bat bootRun
 ```
 
 ## API
@@ -64,5 +64,5 @@ H2 콘솔은 `http://localhost:8080/h2-console`에서 확인할 수 있습니다
 Kafka 발행은 기본값이 꺼져 있습니다. 로컬 Kafka를 켠 뒤 다음처럼 실행하면 활성화됩니다.
 
 ```powershell
-.\mvnw.cmd spring-boot:run "-Dspring-boot.run.arguments=--app.kafka.enabled=true"
+.\gradlew.bat bootRun --args="--app.kafka.enabled=true"
 ```
