@@ -1,7 +1,5 @@
 # Spring Boot Orders CRUD Practice
 
-코딩 테스트 연습용으로 만든 간단한 주문 CRUD API입니다.
-
 ## 실행
 
 Redis와 Kafka까지 함께 확인하려면 먼저 Docker Compose로 인프라를 띄웁니다.
