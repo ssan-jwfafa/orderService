@@ -89,4 +89,27 @@ class OrderControllerIntegrationTest {
         mockMvc.perform(get("/api/orders/2"))
                 .andExpect(status().isNotFound());
     }
+
+    @Test
+    void createFailsWhenRequestIsInvalid() throws Exception {
+        String invalidRequest = """
+                {
+                  "userId": 1,
+                  "items": [
+                    {
+                      "productName": "",
+                      "price": 1000,
+                      "quantity": 1
+                    }
+                  ]
+                }
+                """;
+
+        mockMvc.perform(post("/api/orders")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(invalidRequest))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.status").value(400))
+                .andExpect(jsonPath("$.message").value("items[0].productName: must not be blank"));
+    }
 }
